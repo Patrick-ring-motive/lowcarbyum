@@ -96,11 +96,11 @@ void async function LinkResolver() {
       }
     }
 
-
-    let hrefHttp = document.querySelectorAll('[href^="http://"]');
+    
+    let hrefHttp = document.querySelectorAll('['+attr+'^="http://"]');
     const hrefHttp_length=hrefHttp.length;
     for(let i=0;i<hrefHttp_length;i++){try{
-      hrefHttp[i].setAttribute('href',hrefHttp[i].replace('http://','https://'));
+      hrefHttp[i].setAttribute(attr,hrefHttp[i].replace('http://','https://'));
     }catch(e){continue;}}
     
     let srcHttp = document.querySelectorAll('[src^="http://"]');

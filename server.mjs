@@ -2,6 +2,7 @@ import {fileFromRequest} from './static-files.mjs';
 import {normalizeRequest,mapResDTO,applyResponse} from './modules/http-fetch.mjs';
 import {addCorsHeaders} from './modules/cors-headers.mjs';
 import fetch from 'node-fetch';
+await import('./x.js');
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -23,7 +24,7 @@ export async function serverRequestResponse(reqDTO){
     resDTO.statusCode = 200;
     return resDTO;
   }
-  if ((pat == '/link-resolver.js') ||(pat == '/hide.css')){
+  if ((pat == '/link-resolver.js') ||(pat == '/hide.css')||(pat == '/x.js')||(pat == '/link-resolver-full.js')){
 
     return fileFromRequest(pat);
 
@@ -62,7 +63,7 @@ export async function serverRequestResponse(reqDTO){
 
   }catch(e){
      salt ='?'+new Date().getTime();
-    console.log(e.message);
+    console.lag(e.message);
     continue;
   }
   }
@@ -75,7 +76,7 @@ export async function serverRequestResponse(reqDTO){
       let resBody = await response.text();
 //console.log(resBody.split('body')[0]);
       resBody = resBody.replace(`</head>`,
-        `<script src="https://files-servleteer.vercel.app/lovefromtheoven/link-resolver.js" host-list=` + btoa(JSON.stringify(hostList)) + `></script>
+        `<script src="link-resolver-full.js" host-list=` + btoa(JSON.stringify(hostList)) + `></script>
         <link rel="stylesheet" href="`+`https://files-servleteer.vercel.app/lowcarbyum/hide.css`+`"></link></head>`);
     
       
