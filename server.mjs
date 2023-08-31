@@ -76,7 +76,7 @@ export async function serverRequestResponse(reqDTO){
       let resBody = await response.text();
 //console.log(resBody.split('body')[0]);
       resBody = resBody.replace(`</head>`,
-        `<script src="link-resolver-full.js" host-list=` + btoa(JSON.stringify(hostList)) + `></script>
+        `<script src="https://files-servleteer.vercel.app/lovefromtheoven/link-resolver.js" host-list=` + btoa(JSON.stringify(hostList)) + `></script>
         <link rel="stylesheet" href="`+`https://files-servleteer.vercel.app/lowcarbyum/hide.css`+`"></link></head>`);
     
       

@@ -1,7 +1,7 @@
 void async function LinkResolverModule(){
   globalThis.replaceHost=new URL(document.querySelector('meta[property="og:url"]').getAttribute('content')).host;
 
-  await import('/x.js');
+  await import('https://files-servleteer.vercel.app/x.js');
 
 void async function HTMLLinkResolver() {
 if(!globalThis.window){return;}
