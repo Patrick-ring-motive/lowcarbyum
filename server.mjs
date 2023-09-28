@@ -18,6 +18,8 @@ export async function serverRequestResponse(reqDTO){
   resDTO.headers={};
   let hostProxy = reqDTO.host;
   let path = reqDTO.shortURL.replaceAll('*', '');
+  if(path.startsWith('/_root/')){path=path.replace('/_root/','/');}
+  else if(path.startsWith('/_root')){path=path.replace('/_root','/');}
   let pat = path.split('?')[0].split('#')[0];
 
   if (reqDTO.shortURL == '/ping') {

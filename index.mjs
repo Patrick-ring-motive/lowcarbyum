@@ -1,3 +1,20 @@
+/** 
+Root Fallback
+<style>
+*{display:none;}
+</style>
+<script>
+void async function(){
+
+let root=await fetch('/_root');
+let homePage=await root.text();
+
+document.write(homePage);
+
+}();
+</script>
+*/
+
 import fetch from 'node-fetch';
 import http from 'http';
 import { addCorsHeaders } from './modules/cors-headers.mjs';
