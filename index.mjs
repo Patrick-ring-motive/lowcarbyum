@@ -17,12 +17,17 @@ document.write(homePage);
 
 import fetch from 'node-fetch';
 import http from 'http';
-import { addCorsHeaders } from './modules/cors-headers.mjs';
-import { normalizeRequest, mapResHeaders, applyResponse } from './modules/http-fetch.mjs';
-import { serverRequestResponse } from './server.mjs';
-
-
-
+import {
+  addCorsHeaders
+} from './modules/cors-headers.mjs';
+import {
+  normalizeRequest,
+  mapResHeaders,
+  applyResponse
+} from './modules/http-fetch.mjs';
+import {
+  serverRequestResponse
+} from './server.mjs';
 
 http.createServer(onRequest).listen(3000);
 
@@ -38,7 +43,6 @@ async function onRequest(req, res) {
   return await applyResponse(res, resDTO);
 
 }
-
 
 function getType(obj) {
   return obj.constructor.toString().split(' ')[1].split('(')[0];
